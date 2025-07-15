@@ -9,7 +9,7 @@ export const GithubButton = () => (
   <Link
     href="https://github.com/yosoyvillaa/next-litebans"
     target="_blank"
-    rel="noreferrer"
+    rel="noopener noreferrer"
   >
     <div
       className={cn(
