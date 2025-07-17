@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 
-import { IoCalendar } from "react-icons/io5";
+import { PiCalendarDotsFill } from "react-icons/pi";
 import { PiScrollFill } from "react-icons/pi";
-import { FaEarthEurope } from "react-icons/fa6";
+import { PiGlobeFill } from "react-icons/pi";
 
 import { formatDate } from "@/lib/date";
 import { siteConfig } from "@config/site";
@@ -14,7 +14,7 @@ import { PunishmentInfoCard } from "@/components/info/punishment-info-card";
 import { RelativeTimeTooltip } from "@/components/punishments/relative-time-tooltip";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
-  
+
   const { dictionary } = await language();
 
   if (isNaN(parseInt(params.id))) {
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   if (!kick) {
     return notFound();
   }
-  
+
   return {
     title: p(dictionary.pages.kicks.info.title, {
       id: params.id
@@ -78,30 +78,30 @@ export default async function Kick({
       <section className="space-y-4 text-center md:text-left">
         <PunishmentInfoCard punishment={kick}>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2"/>{dictionary.words.reason}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2" />{dictionary.words.reason}</h3>
             <p>{kick.reason}</p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><IoCalendar className="mr-2"/>{dictionary.words.date}</h3>
-            <p><RelativeTimeTooltip lang={lang} time={kick.time}/></p>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiCalendarDotsFill className="mr-2" />{dictionary.words.date}</h3>
+            <p><RelativeTimeTooltip lang={lang} time={kick.time} /></p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><FaEarthEurope className="mr-2"/>{dictionary.words.originServer}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiGlobeFill className="mr-2" />{dictionary.words.originServer}</h3>
             <p>{kick.server}</p>
           </div>
         </PunishmentInfoCard>
 
         <div className="block md:hidden order-3 mx-auto space-y-4 w-[350px]">
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2"/>{dictionary.words.reason}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2" />{dictionary.words.reason}</h3>
             <p>{kick.reason}</p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><IoCalendar className="mr-2"/>{dictionary.words.date}</h3>
-            <p><RelativeTimeTooltip lang={lang} time={kick.time}/></p>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiCalendarDotsFill className="mr-2" />{dictionary.words.date}</h3>
+            <p><RelativeTimeTooltip lang={lang} time={kick.time} /></p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><FaEarthEurope className="mr-2"/>{dictionary.words.originServer}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiGlobeFill className="mr-2" />{dictionary.words.originServer}</h3>
             <p>{kick.server}</p>
           </div>
         </div>

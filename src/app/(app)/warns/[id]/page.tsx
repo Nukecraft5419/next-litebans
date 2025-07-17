@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 
-import { IoCalendar } from "react-icons/io5";
+import { PiCalendarDotsFill } from "react-icons/pi";
 import { PiScrollFill } from "react-icons/pi";
-import { FaEarthEurope } from "react-icons/fa6";
-import { MdOutlineNotificationsActive } from "react-icons/md";
+import { PiGlobeFill } from "react-icons/pi";
+import { PiBellRingingFill } from "react-icons/pi";
 
 import { formatDate } from "@/lib/date";
 import { siteConfig } from "@config/site";
@@ -15,7 +15,7 @@ import { PunishmentInfoCard } from "@/components/info/punishment-info-card";
 import { RelativeTimeTooltip } from "@/components/punishments/relative-time-tooltip";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
-  
+
   const { dictionary } = await language();
 
   if (isNaN(parseInt(params.id))) {
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   if (!warn) {
     return notFound();
   }
-  
+
   return {
     title: p(dictionary.pages.warns.info.title, {
       id: params.id
@@ -79,38 +79,38 @@ export default async function Warn({
       <section className="space-y-4 text-center md:text-left">
         <PunishmentInfoCard punishment={warn}>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2"/>{dictionary.words.reason}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2" />{dictionary.words.reason}</h3>
             <p>{warn.reason}</p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><IoCalendar className="mr-2"/>{dictionary.words.date}</h3>
-            <p><RelativeTimeTooltip lang={lang} time={warn.time}/></p>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiCalendarDotsFill className="mr-2" />{dictionary.words.date}</h3>
+            <p><RelativeTimeTooltip lang={lang} time={warn.time} /></p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><MdOutlineNotificationsActive className="mr-2"/>{dictionary.words.notified}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiBellRingingFill className="mr-2" />{dictionary.words.notified}</h3>
             <p>{warn.warned ? dictionary.words.yes : dictionary.words.no}</p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><FaEarthEurope className="mr-2"/>{dictionary.words.originServer}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiGlobeFill className="mr-2" />{dictionary.words.originServer}</h3>
             <p>{warn.server}</p>
           </div>
         </PunishmentInfoCard>
 
         <div className="block md:hidden order-3 mx-auto space-y-4 w-[350px]">
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2"/>{dictionary.words.reason}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2" />{dictionary.words.reason}</h3>
             <p>{warn.reason}</p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><IoCalendar className="mr-2"/>{dictionary.words.date}</h3>
-            <p><RelativeTimeTooltip lang={lang} time={warn.time}/></p>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiCalendarDotsFill className="mr-2" />{dictionary.words.date}</h3>
+            <p><RelativeTimeTooltip lang={lang} time={warn.time} /></p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><MdOutlineNotificationsActive className="mr-2"/>{dictionary.words.notified}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiBellRingingFill className="mr-2" />{dictionary.words.notified}</h3>
             <p>{warn.warned ? dictionary.words.yes : dictionary.words.no}</p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><FaEarthEurope className="mr-2"/>{dictionary.words.originServer}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiGlobeFill className="mr-2" />{dictionary.words.originServer}</h3>
             <p>{warn.server}</p>
           </div>
         </div>

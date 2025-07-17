@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LuExternalLink } from "react-icons/lu";
+import { PiArrowSquareOutFill } from "react-icons/pi";
 
 import { PunishmentType } from "@/types";
 
@@ -16,7 +16,7 @@ export const PunishmentInfoButton = ({
 }: PunishmentInfoButtonProps) => (
   <Link href={`/${type}s/${id}`}>
     <Button size="icon_sm" variant="secondary" className="transition ease-in-out hover:scale-110">
-      <LuExternalLink />
+      <PiArrowSquareOutFill />
     </Button>
   </Link>
 )

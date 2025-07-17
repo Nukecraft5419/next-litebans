@@ -1,5 +1,5 @@
-import { FaCheck } from "react-icons/fa6";
-import { FaTimes } from "react-icons/fa";
+import { PiCheckFatFill } from "react-icons/pi";
+import { PiXFill } from "react-icons/pi";
 
 import { getWarns, sanitizeWarns } from "@/lib/punishment/warn";
 
@@ -29,7 +29,7 @@ export const WarnsBodyData = async ({
   const dbWarns = await getWarns(page, player, staff);
   const warns = await sanitizeWarns(dbWarns);
 
-  return (  
+  return (
     <TableBody>
       {warns.map((warn) => (
         <TableRow key={warn.id}>
@@ -47,9 +47,9 @@ export const WarnsBodyData = async ({
           </TableCell>
           <TableCell className="w-[150px]">
             {warn.warned ?
-              <FaCheck className="mx-auto text-xl" />
+              <PiCheckFatFill className="mx-auto text-xl" />
               :
-              <FaTimes className="mx-auto text-lg" />
+              <PiXFill className="mx-auto text-lg" />
             }
           </TableCell>
           <TableCell className="!pl-0 !pr-3">

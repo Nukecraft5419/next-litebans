@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 
-import { IoCalendar } from "react-icons/io5";
+import { PiCalendarDotsFill } from "react-icons/pi";
 import { PiScrollFill } from "react-icons/pi";
-import { FaEarthEurope } from "react-icons/fa6";
-import { PiClockCountdownBold } from "react-icons/pi";
+import { PiGlobeFill } from "react-icons/pi";
+import { PiClockCountdownFill } from "react-icons/pi";
 
 import { siteConfig } from "@config/site";
 import p from "@/lib/language/utils/parse";
@@ -17,7 +17,7 @@ import { RelativeTimeTooltip } from "@/components/punishments/relative-time-tool
 import { PunishmentStatusDot } from "@/components/punishments/punishment-status-dot";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
-  
+
   const { lang, dictionary } = await language();
   const localDictionary = dictionary.pages.bans;
 
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   if (!ban) {
     return notFound();
   }
-  
+
   return {
     title: p(dictionary.pages.bans.info.title, {
       id: params.id
@@ -95,44 +95,44 @@ export default async function Ban({
       <section className="space-y-4 text-center md:text-left">
         <PunishmentInfoCard punishment={ban}>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2"/>{dictionary.words.reason}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2" />{dictionary.words.reason}</h3>
             <p>{ban.reason}</p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><IoCalendar className="mr-2"/>{dictionary.words.date}</h3>
-            <p><RelativeTimeTooltip lang={lang} time={ban.time}/></p>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiCalendarDotsFill className="mr-2" />{dictionary.words.date}</h3>
+            <p><RelativeTimeTooltip lang={lang} time={ban.time} /></p>
           </div>
           <div className="space-y-1 inline-flex flex-col">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiClockCountdownBold className="mr-2"/>{dictionary.words.expires}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiClockCountdownFill className="mr-2" />{dictionary.words.expires}</h3>
             <p className="flex items-center">
               <PunishmentStatusDot dictionary={localDictionary} status={ban.status} />
-              <RelativeTimeTooltip lang={lang} time={ban.until}/>
+              <RelativeTimeTooltip lang={lang} time={ban.until} />
             </p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><FaEarthEurope className="mr-2"/>{dictionary.words.originServer}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiGlobeFill className="mr-2" />{dictionary.words.originServer}</h3>
             <p>{ban.server}</p>
           </div>
         </PunishmentInfoCard>
 
         <div className="block md:hidden order-3 mx-auto space-y-4 w-[350px]">
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2"/>{dictionary.words.reason}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2" />{dictionary.words.reason}</h3>
             <p>{ban.reason}</p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><IoCalendar className="mr-2"/>{dictionary.words.date}</h3>
-            <p><RelativeTimeTooltip lang={lang} time={ban.time}/></p>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiCalendarDotsFill className="mr-2" />{dictionary.words.date}</h3>
+            <p><RelativeTimeTooltip lang={lang} time={ban.time} /></p>
           </div>
           <div className="space-y-1 inline-flex flex-col w-full">
-            <h3 className="inline-flex items-center text-lg font-medium mx-auto"><PiClockCountdownBold className="mr-2"/>{dictionary.words.expires}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium mx-auto"><PiClockCountdownFill className="mr-2" />{dictionary.words.expires}</h3>
             <p className="flex items-center mx-auto">
               <PunishmentStatusDot dictionary={localDictionary} status={ban.status} />
-              <RelativeTimeTooltip lang={lang} time={ban.until}/>
+              <RelativeTimeTooltip lang={lang} time={ban.until} />
             </p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><FaEarthEurope className="mr-2"/>{dictionary.words.originServer}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium"><PiGlobeFill className="mr-2" />{dictionary.words.originServer}</h3>
             <p>{ban.server}</p>
           </div>
         </div>

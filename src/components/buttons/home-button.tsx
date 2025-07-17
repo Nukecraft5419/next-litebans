@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { PiHouseFill } from "react-icons/pi";
 
 import { cn } from "@/lib/utils";
 
-import { Icons } from "@/components/layout/icons";
 import { buttonVariants } from "@/components/ui/button";
 
 export const HomeButton = () => (
@@ -19,7 +19,7 @@ export const HomeButton = () => (
         "w-9 px-0"
       )}
     >
-      <Icons.home className="h-4 w-4" />
+      <PiHouseFill className="h-4 w-4" />
       <span className="sr-only">Home</span>
     </div>
   </Link>
