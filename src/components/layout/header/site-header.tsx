@@ -7,13 +7,13 @@ import { PlayerInput } from "@/components/input/player-lookup";
 
 import { MainNav } from "./main-nav";
 import { MobileNav } from "./mobile-nav";
-import { GithubButton } from "@/components/buttons/github-button";
+import { HomeButton } from "@/components/buttons/home-button";
 
 export const SiteHeader = async () => {
   const dictionaries = getDictionaries();
   const { bans, mutes, warns, kicks } = await getPunishmentCount();
 
-  return(
+  return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center space-x-1 px-4">
         <MobileNav bans={bans} mutes={mutes} warns={warns} kicks={kicks} dictionaries={dictionaries} />
@@ -23,7 +23,7 @@ export const SiteHeader = async () => {
             <PlayerInput />
             <LanguageChanger dictionaries={dictionaries} />
             <ThemeToggle />
-            <GithubButton />
+            <HomeButton />
           </nav>
         </div>
       </div>
