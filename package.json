@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write .",
     "setup:db:generate": "prisma generate",
     "setup:db:pull": "prisma db pull"
   },
@@ -25,6 +26,7 @@
     "motion-number": "^0.1.6",
     "next": "14.2.25",
     "next-themes": "^0.3.0",
+    "prettier": "^3.8.1",
     "react": "^18",
     "react-country-flag": "^3.1.0",
     "react-dom": "^18",
