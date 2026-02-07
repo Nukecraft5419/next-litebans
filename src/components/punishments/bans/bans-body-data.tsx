@@ -5,11 +5,7 @@ import { AvatarName } from "@/components/table/avatar-name";
 import { PunishmentInfoButton } from "@/components/buttons/punishment-info-button";
 import { PunishmentStatusDot } from "@/components/punishments/punishment-status-dot";
 import { RelativeTimeTooltip } from "@/components/punishments/relative-time-tooltip";
-import {
-  TableBody,
-  TableCell,
-  TableRow,
-} from "@/components/ui/table"
+import { TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 interface BansBodyDataProps {
   language: string;
@@ -24,14 +20,13 @@ export const BansBodyData = async ({
   dictionary,
   page,
   player,
-  staff
+  staff,
 }: BansBodyDataProps) => {
-
   const localDictionary = dictionary.pages.bans;
   const dbBans = await getBans(page, player, staff);
   const bans = await sanitizeBans(localDictionary, dbBans);
 
-  return (  
+  return (
     <TableBody>
       {bans.map((ban) => (
         <TableRow key={ban.id}>
@@ -39,17 +34,23 @@ export const BansBodyData = async ({
             <AvatarName query="player" name={ban.name!} uuid={ban.uuid!} />
           </TableCell>
           <TableCell className="space-y-1 w-40 text-center">
-            <AvatarName query="staff" name={ban.banned_by_name!} uuid={ban.banned_by_uuid!} console={ban.console} />
+            <AvatarName
+              query="staff"
+              name={ban.banned_by_name!}
+              uuid={ban.banned_by_uuid!}
+              console={ban.console}
+            />
           </TableCell>
-          <TableCell className="w-[227px]">
-            {ban.reason}
-          </TableCell>
+          <TableCell className="w-[227px]">{ban.reason}</TableCell>
           <TableCell className="w-[215px]">
             <RelativeTimeTooltip lang={language} time={ban.time} />
           </TableCell>
           <TableCell className="w-[215px]">
             <p className="flex items-center">
-              <PunishmentStatusDot dictionary={localDictionary} status={ban.status} />
+              <PunishmentStatusDot
+                dictionary={localDictionary}
+                status={ban.status}
+              />
               <RelativeTimeTooltip lang={language} time={ban.until} />
             </p>
           </TableCell>
@@ -59,5 +60,5 @@ export const BansBodyData = async ({
         </TableRow>
       ))}
     </TableBody>
-  )
-}
+  );
+};

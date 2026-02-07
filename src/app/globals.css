@@ -73,7 +73,8 @@
   body {
     @apply bg-background text-foreground;
   }
-  td, th {
+  td,
+  th {
     @apply !px-2;
   }
 }

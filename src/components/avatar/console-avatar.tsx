@@ -12,13 +12,13 @@ interface ConsoleAvatarProps {
 export const ConsoleAvatar = ({
   name,
   size,
-  className
+  className,
 }: ConsoleAvatarProps) => (
-  <Image 
+  <Image
     src={siteConfig.console.icon}
     alt={`${name}'s avatar`}
     width={size ?? 32}
     height={size ?? 32}
     className={cn("mx-auto rounded-sm", className)}
   />
-)
+);

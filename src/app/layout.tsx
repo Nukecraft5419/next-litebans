@@ -13,9 +13,8 @@ import { SiteHeader } from "@/components/layout/header/site-header";
 const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata() {
-  
   const { dictionary } = await language();
-  
+
   return {
     title: {
       template: `%s | ${siteConfig.title}`,
@@ -27,21 +26,24 @@ export async function generateMetadata() {
     },
     twitter: {
       card: "summary",
-      creator: "@yosoyvillaa"
-    }
-  }
+      creator: "@yosoyvillaa",
+    },
+  };
 }
 
 export default async function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
-  const { lang, dictionary} = await language();
+  const { lang, dictionary } = await language();
 
   return (
-    <LanguageProvider lang={lang} dictionary={dictionary} defaultLang={siteConfig.languages.default}>
+    <LanguageProvider
+      lang={lang}
+      dictionary={dictionary}
+      defaultLang={siteConfig.languages.default}
+    >
       <html lang={lang}>
         <head>
           <link rel="shortcut icon" href={siteConfig.favicon} />
@@ -55,7 +57,7 @@ export default async function RootLayout({
           >
             <div vaul-drawer-wrapper="" className="h-full">
               <div className="relative flex h-full flex-col bg-background">
-                <SiteHeader />  
+                <SiteHeader />
                 <main className="flex-1">{children}</main>
               </div>
             </div>

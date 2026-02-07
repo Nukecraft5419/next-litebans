@@ -1,27 +1,27 @@
 const language = {
   info: {
     country_code: "GB",
-    lang_name: "English"
+    lang_name: "English",
   },
   site: {
-    description: "A simple and lightweight Litebans web interface."
+    description: "A simple and lightweight Litebans web interface.",
   },
   words: {
     bans: {
       singular: "Ban",
-      plural: "Bans"
+      plural: "Bans",
     },
     mutes: {
       singular: "Mute",
-      plural: "Mutes"
+      plural: "Mutes",
     },
     kicks: {
       singular: "Kick",
-      plural: "Kicks"
+      plural: "Kicks",
     },
     warns: {
       singular: "Warn",
-      plural: "Warns"
+      plural: "Warns",
     },
     yes: "Yes",
     no: "No",
@@ -37,7 +37,7 @@ const language = {
     home: {
       title: "Home",
       // Placeholders: {total}, {bans}, {mutes}, {kicks}, {warns}
-      subtitle: "Welcome to Litebans Web Interface!"
+      subtitle: "Welcome to Litebans Web Interface!",
     },
     history: {
       title: "History",
@@ -50,16 +50,16 @@ const language = {
           by: "Punished by",
           reason: "Reason",
           date: "Date",
-          expires: "Expires"
+          expires: "Expires",
         },
         permanent: "Permanent punishment",
         expire_not_applicable: "N/A",
         active: {
           true: "Active",
           temporal: "Temporal",
-          false: "Expired"
-        }
-      }
+          false: "Expired",
+        },
+      },
     },
     bans: {
       title: "Bans",
@@ -71,14 +71,14 @@ const language = {
           by: "Banned by",
           reason: "Reason",
           date: "Date",
-          expires: "Expires"
+          expires: "Expires",
         },
         permanent: "Permanent ban",
         active: {
           true: "Active",
           temporal: "Temporal",
-          false: "Expired"
-        }
+          false: "Expired",
+        },
       },
       info: {
         title: "Ban #{id}",
@@ -87,8 +87,8 @@ const language = {
           active: "Active",
           expired: "Expired",
           permanent: "Permanent",
-        }
-      }
+        },
+      },
     },
     mutes: {
       title: "Mutes",
@@ -100,14 +100,14 @@ const language = {
           by: "Muted by",
           reason: "Reason",
           date: "Date",
-          expires: "Expires"
+          expires: "Expires",
         },
         permanent: "Permanent mute",
         active: {
           true: "Active",
           temporal: "Temporal",
-          false: "Expired"
-        }
+          false: "Expired",
+        },
       },
       info: {
         title: "Mute #{id}",
@@ -116,8 +116,8 @@ const language = {
           active: "Active",
           expired: "Expired",
           permanent: "Permanent",
-        }
-      }
+        },
+      },
     },
     warns: {
       title: "Warns",
@@ -129,12 +129,12 @@ const language = {
           by: "Warned by",
           reason: "Reason",
           date: "Date",
-          notified: "Notified"
+          notified: "Notified",
         },
       },
       info: {
-        title: "Warn #{id}"
-      }
+        title: "Warn #{id}",
+      },
     },
     kicks: {
       title: "Kicks",
@@ -145,35 +145,36 @@ const language = {
           player: "Player",
           by: "Kicked by",
           reason: "Reason",
-          date: "Date"
-        }
+          date: "Date",
+        },
       },
       info: {
-        title: "Kick #{id}"
-      }
+        title: "Kick #{id}",
+      },
     },
     playerHistory: {
       // Placeholders: {player}
-      title: "{player}"
+      title: "{player}",
     },
     errors: {
       notFound: {
         title: "404",
-        description: "Seems like you are lost. Please go back to the main page.",
-        button: "Back to home page"
-      }
-    }
+        description:
+          "Seems like you are lost. Please go back to the main page.",
+        button: "Back to home page",
+      },
+    },
   },
   pagination: {
     previous: "Previous",
-    next: "Next"
+    next: "Next",
   },
   notifications: {
     playerNotFound: {
       title: "Error",
       description: "The player does not exist in the database.",
-    }
-  }
-}
+    },
+  },
+};
 
 module.exports = language;

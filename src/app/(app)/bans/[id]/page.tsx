@@ -17,7 +17,6 @@ import { RelativeTimeTooltip } from "@/components/punishments/relative-time-tool
 import { PunishmentStatusDot } from "@/components/punishments/punishment-status-dot";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
-
   const { lang, dictionary } = await language();
   const localDictionary = dictionary.pages.bans;
 
@@ -33,7 +32,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 
   return {
     title: p(dictionary.pages.bans.info.title, {
-      id: params.id
+      id: params.id,
     }),
     openGraph: {
       images: `https://minotar.net/helm/${ban?.uuid ?? ban?.name}`,
@@ -42,19 +41,17 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
         staff: ban.banned_by_name,
         reason: ban.reason,
         time: formatDate(ban.time),
-        duration: ban.until instanceof Date ? formatDuration(ban.time, ban.until, lang) : ban.until,
-        server: ban.server
-      })
-    }
-  }
+        duration:
+          ban.until instanceof Date
+            ? formatDuration(ban.time, ban.until, lang)
+            : ban.until,
+        server: ban.server,
+      }),
+    },
+  };
 }
 
-export default async function Ban({
-  params
-}: {
-  params: { id: string }
-}) {
-
+export default async function Ban({ params }: { params: { id: string } }) {
   const { lang, dictionary } = await language();
   const localDictionary = dictionary.pages.bans;
 
@@ -73,21 +70,29 @@ export default async function Ban({
       <div className="space-y-2 mx-auto">
         <h1 className="text-center text-5xl font-bold leading-tight tracking-tighter sm:text-6xl lg:leading-[1.1]">
           {p(localDictionary.info.title, {
-            id: params.id
+            id: params.id,
           })}
         </h1>
         <div className="flex space-x-2 justify-center">
           {ban.ipban && (
-            <Badge variant="secondary">{localDictionary.info.badges.ipban}</Badge>
+            <Badge variant="secondary">
+              {localDictionary.info.badges.ipban}
+            </Badge>
           )}
           {ban.active && (
-            <Badge variant="secondary">{localDictionary.info.badges.active}</Badge>
+            <Badge variant="secondary">
+              {localDictionary.info.badges.active}
+            </Badge>
           )}
-          {(ban.status !== undefined && !ban.status) && (
-            <Badge variant="secondary">{localDictionary.info.badges.expired}</Badge>
+          {ban.status !== undefined && !ban.status && (
+            <Badge variant="secondary">
+              {localDictionary.info.badges.expired}
+            </Badge>
           )}
-          {(ban.permanent && ban.status) && (
-            <Badge variant="secondary">{localDictionary.info.badges.permanent}</Badge>
+          {ban.permanent && ban.status && (
+            <Badge variant="secondary">
+              {localDictionary.info.badges.permanent}
+            </Badge>
           )}
         </div>
       </div>
@@ -95,48 +100,82 @@ export default async function Ban({
       <section className="space-y-4 text-center md:text-left">
         <PunishmentInfoCard punishment={ban}>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2" />{dictionary.words.reason}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium">
+              <PiScrollFill className="mr-2" />
+              {dictionary.words.reason}
+            </h3>
             <p>{ban.reason}</p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiCalendarDotsFill className="mr-2" />{dictionary.words.date}</h3>
-            <p><RelativeTimeTooltip lang={lang} time={ban.time} /></p>
+            <h3 className="inline-flex items-center text-lg font-medium">
+              <PiCalendarDotsFill className="mr-2" />
+              {dictionary.words.date}
+            </h3>
+            <p>
+              <RelativeTimeTooltip lang={lang} time={ban.time} />
+            </p>
           </div>
           <div className="space-y-1 inline-flex flex-col">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiClockCountdownFill className="mr-2" />{dictionary.words.expires}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium">
+              <PiClockCountdownFill className="mr-2" />
+              {dictionary.words.expires}
+            </h3>
             <p className="flex items-center">
-              <PunishmentStatusDot dictionary={localDictionary} status={ban.status} />
+              <PunishmentStatusDot
+                dictionary={localDictionary}
+                status={ban.status}
+              />
               <RelativeTimeTooltip lang={lang} time={ban.until} />
             </p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiGlobeFill className="mr-2" />{dictionary.words.originServer}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium">
+              <PiGlobeFill className="mr-2" />
+              {dictionary.words.originServer}
+            </h3>
             <p>{ban.server}</p>
           </div>
         </PunishmentInfoCard>
 
         <div className="block md:hidden order-3 mx-auto space-y-4 w-[350px]">
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiScrollFill className="mr-2" />{dictionary.words.reason}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium">
+              <PiScrollFill className="mr-2" />
+              {dictionary.words.reason}
+            </h3>
             <p>{ban.reason}</p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiCalendarDotsFill className="mr-2" />{dictionary.words.date}</h3>
-            <p><RelativeTimeTooltip lang={lang} time={ban.time} /></p>
+            <h3 className="inline-flex items-center text-lg font-medium">
+              <PiCalendarDotsFill className="mr-2" />
+              {dictionary.words.date}
+            </h3>
+            <p>
+              <RelativeTimeTooltip lang={lang} time={ban.time} />
+            </p>
           </div>
           <div className="space-y-1 inline-flex flex-col w-full">
-            <h3 className="inline-flex items-center text-lg font-medium mx-auto"><PiClockCountdownFill className="mr-2" />{dictionary.words.expires}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium mx-auto">
+              <PiClockCountdownFill className="mr-2" />
+              {dictionary.words.expires}
+            </h3>
             <p className="flex items-center mx-auto">
-              <PunishmentStatusDot dictionary={localDictionary} status={ban.status} />
+              <PunishmentStatusDot
+                dictionary={localDictionary}
+                status={ban.status}
+              />
               <RelativeTimeTooltip lang={lang} time={ban.until} />
             </p>
           </div>
           <div className="space-y-1">
-            <h3 className="inline-flex items-center text-lg font-medium"><PiGlobeFill className="mr-2" />{dictionary.words.originServer}</h3>
+            <h3 className="inline-flex items-center text-lg font-medium">
+              <PiGlobeFill className="mr-2" />
+              {dictionary.words.originServer}
+            </h3>
             <p>{ban.server}</p>
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }

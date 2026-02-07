@@ -13,13 +13,13 @@ export const PlayerAvatar = ({
   name,
   uuid,
   size,
-  className
+  className,
 }: PlayerAvatarProps) => (
-  <Image 
+  <Image
     src={`https://minotar.net/helm/${uuid ?? name}`}
     alt={`${name}'s avatar`}
     width={size ?? 32}
     height={size ?? 32}
     className={cn("mx-auto rounded-sm", className)}
   />
-)
+);

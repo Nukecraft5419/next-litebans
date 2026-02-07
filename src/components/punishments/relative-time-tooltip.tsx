@@ -1,20 +1,20 @@
 import { getRelativeDifference, getRelativeDifferenceText } from "@/utils/date";
 
-import { 
+import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger
+  TooltipTrigger,
 } from "@/components/ui/tooltip";
 
 interface RelativeTimeTooltipProps {
-  lang: string
-  time: Date | string
+  lang: string;
+  time: Date | string;
 }
 
 export const RelativeTimeTooltip = ({
   lang,
-  time
+  time,
 }: RelativeTimeTooltipProps) => (
   <TooltipProvider delayDuration={50}>
     <Tooltip>
@@ -28,4 +28,4 @@ export const RelativeTimeTooltip = ({
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>
-)
+);

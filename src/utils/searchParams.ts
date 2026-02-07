@@ -9,24 +9,29 @@ const getPage = ({ searchParams }: SearchParams) => {
   }
 
   return page;
-}
+};
 
 const getPlayer = ({ searchParams }: SearchParams) => {
   const player = searchParams.player as string;
-  if (!/^[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}$/i.test(player)) {
+  if (
+    !/^[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}$/i.test(player)
+  ) {
     return undefined;
   }
 
   return player;
-}
+};
 
 const getStaff = ({ searchParams }: SearchParams) => {
   const staff = searchParams.staff as string;
-  if (!/^[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}$/i.test(staff) && staff !== siteConfig.console.uuid) {
+  if (
+    !/^[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}$/i.test(staff) &&
+    staff !== siteConfig.console.uuid
+  ) {
     return undefined;
   }
 
   return staff;
-}
+};
 
-export { getPage, getPlayer, getStaff }
+export { getPage, getPlayer, getStaff };

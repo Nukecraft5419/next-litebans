@@ -10,14 +10,13 @@ import { HistoryTable } from "@/components/punishments/history/history-table";
 import { siteConfig } from "@config/site";
 
 export async function generateMetadata() {
-  
   const { dictionary } = await language();
 
   const banCount = await db.litebans_bans.count();
   const muteCount = await db.litebans_mutes.count();
   const warnCount = await db.litebans_warnings.count();
   const kickCount = await db.litebans_kicks.count();
-  
+
   return {
     title: dictionary.pages.history.title,
     openGraph: {
@@ -27,27 +26,28 @@ export async function generateMetadata() {
         mutes: muteCount,
         warns: warnCount,
         kicks: kickCount,
-        total: banCount + muteCount + warnCount + kickCount
-      })
-    }
-  }
+        total: banCount + muteCount + warnCount + kickCount,
+      }),
+    },
+  };
 }
 
 export default async function History(searchParams: SearchParams) {
   const dictionary = (await language()).dictionary.pages.history;
-  
-  
+
   const page = getPage(searchParams);
   const player = getPlayer(searchParams);
   const staff = getStaff(searchParams);
 
-  const punishmentCount = await getPunishmentCount(player, staff).then(({ bans, mutes, warns, kicks }) => bans + mutes + warns + kicks);
+  const punishmentCount = await getPunishmentCount(player, staff).then(
+    ({ bans, mutes, warns, kicks }) => bans + mutes + warns + kicks,
+  );
 
   return (
     <DefaultPage
       title={dictionary.title}
       description={p(dictionary.subtitle, {
-        total: punishmentCount
+        total: punishmentCount,
       })}
       className="w-full lg:w-[1024px]"
     >

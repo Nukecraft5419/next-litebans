@@ -16,11 +16,11 @@ export const HomeButton = () => (
         buttonVariants({
           variant: "ghost",
         }),
-        "w-9 px-0"
+        "w-9 px-0",
       )}
     >
       <PiHouseFill className="h-4 w-4" />
       <span className="sr-only">Home</span>
     </div>
   </Link>
-)
+);

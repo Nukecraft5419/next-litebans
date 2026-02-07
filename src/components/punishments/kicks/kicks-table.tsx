@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { Suspense } from "react";
 
@@ -10,12 +10,7 @@ import { TablePagination } from "@/components/table/pagination";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { KicksBodySkeleton } from "@/components/punishments/kicks/kicks-body-skeleton";
 import { KicksBodyData } from "@/components/punishments/kicks/kicks-body-data";
-import {
-  Table,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 interface KicksTableProps {
   page: number;
@@ -23,12 +18,7 @@ interface KicksTableProps {
   staff?: string;
 }
 
-export const KicksTable = async ({ 
-  page,
-  player,
-  staff
-}: KicksTableProps) => {
-
+export const KicksTable = async ({ page, player, staff }: KicksTableProps) => {
   const { lang, dictionary } = await language();
   const localDictionary = dictionary.pages.kicks;
 
@@ -42,15 +32,24 @@ export const KicksTable = async ({
         <Table>
           <TableHeader>
             <TableRow className="bg-muted/50">
-              <TableHead className="text-center">{localDictionary.table.heads.player}</TableHead>
-              <TableHead className="text-center">{localDictionary.table.heads.by}</TableHead>
+              <TableHead className="text-center">
+                {localDictionary.table.heads.player}
+              </TableHead>
+              <TableHead className="text-center">
+                {localDictionary.table.heads.by}
+              </TableHead>
               <TableHead>{localDictionary.table.heads.reason}</TableHead>
               <TableHead>{localDictionary.table.heads.date}</TableHead>
               <TableHead></TableHead>
             </TableRow>
           </TableHeader>
           <Suspense fallback={<KicksBodySkeleton />}>
-            <KicksBodyData language={lang} page={page} player={player} staff={staff} />
+            <KicksBodyData
+              language={lang}
+              page={page}
+              player={player}
+              staff={staff}
+            />
           </Suspense>
         </Table>
         <ScrollBar className="md:hidden" orientation="horizontal" />

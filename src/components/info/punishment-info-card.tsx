@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-"use server"
+"use server";
 
 import Link from "next/link";
 
@@ -21,27 +21,32 @@ interface PunishmentInfoCardProps {
   children: React.ReactNode;
 }
 
-export const PunishmentInfoCard = async ({ punishment, children }: PunishmentInfoCardProps) => {
+export const PunishmentInfoCard = async ({
+  punishment,
+  children,
+}: PunishmentInfoCardProps) => {
   const { dictionary } = await language();
-  
+
   return (
     <div className="flex space-x-4 md:space-y-0 md:flex-row">
       <div className="order-1 space-y-8">
-        <h2 className="text-3xl font-bold text-center">{dictionary.words.player}</h2>
+        <h2 className="text-3xl font-bold text-center">
+          {dictionary.words.player}
+        </h2>
         <Link href={`/@${punishment.name}`} className="block">
-          <AvatarBody 
-            uuid={punishment.uuid!} 
-            name={punishment.name!} 
+          <AvatarBody
+            uuid={punishment.uuid!}
+            name={punishment.name!}
             className="hover:scale-110 md:h-[312px]"
           />
-          <AvatarBust 
-            uuid={punishment.uuid!} 
-            name={punishment.name!} 
+          <AvatarBust
+            uuid={punishment.uuid!}
+            name={punishment.name!}
             className="hover:scale-110"
           />
         </Link>
         <div className="flex space-x-2 justify-center">
-          <img 
+          <img
             src={`https://visage.surgeplay.com/face/128/${getSkinUUID(punishment.name!, punishment.uuid!)}`}
             alt={`${punishment.name}'s avatar`}
             width={28}
@@ -57,36 +62,45 @@ export const PunishmentInfoCard = async ({ punishment, children }: PunishmentInf
       </div>
 
       <div className="order-2 md:order-3 space-y-8">
-        <h2 className="text-3xl font-bold text-center">{dictionary.words.staff}</h2>
-        <Link href={`/history?staff=${punishment.banned_by_uuid}`} className="block">
-          <AvatarBody 
-            uuid={punishment.banned_by_uuid!} 
-            name={punishment.banned_by_name!} 
-            console={punishment.console} 
+        <h2 className="text-3xl font-bold text-center">
+          {dictionary.words.staff}
+        </h2>
+        <Link
+          href={`/history?staff=${punishment.banned_by_uuid}`}
+          className="block"
+        >
+          <AvatarBody
+            uuid={punishment.banned_by_uuid!}
+            name={punishment.banned_by_name!}
+            console={punishment.console}
             className="scale-x-[-1] hover:scale-x-[-1.1] hover:scale-y-110 md:h-[312px]"
           />
-          <AvatarBust 
-            uuid={punishment.banned_by_uuid!} 
-            name={punishment.banned_by_name!} 
-            console={punishment.console} 
+          <AvatarBust
+            uuid={punishment.banned_by_uuid!}
+            name={punishment.banned_by_name!}
+            console={punishment.console}
             className="scale-x-[-1] hover:scale-x-[-1.1] hover:scale-y-110"
           />
         </Link>
         <div className="flex space-x-2 justify-center">
-          {punishment.console ? 
-            <ConsoleAvatar name={punishment.banned_by_name!} size={28} className="!mx-0 mr-1" />
-            :
-            <img 
+          {punishment.console ? (
+            <ConsoleAvatar
+              name={punishment.banned_by_name!}
+              size={28}
+              className="!mx-0 mr-1"
+            />
+          ) : (
+            <img
               src={`https://visage.surgeplay.com/face/128/${punishment.banned_by_uuid}`}
               alt={`${punishment.banned_by_name}'s avatar`}
               width={28}
               height={28}
               className="rounded-sm mx-0 mr-1"
             />
-          }
+          )}
           <p className="text-xl">{punishment.banned_by_name}</p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

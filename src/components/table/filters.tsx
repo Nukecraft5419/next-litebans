@@ -9,7 +9,6 @@ interface FiltersProps {
 }
 
 export const Filters = async ({ player, staff }: FiltersProps) => {
-
   let playerName;
   if (player) {
     playerName = await getPlayerName(player);
@@ -20,17 +19,13 @@ export const Filters = async ({ player, staff }: FiltersProps) => {
     if (staff === siteConfig.console.uuid) staffName = siteConfig.console.name;
     else staffName = await getPlayerName(staff);
   }
-  
+
   return (
     <>
       {(player || staff) && (
         <div className="space-y-2 lg:space-y-0 lg:flex lg:space-x-2">
           {player && (
-            <PlayerFilter
-              type="player"
-              name={playerName!}
-              uuid={player}
-            />
+            <PlayerFilter type="player" name={playerName!} uuid={player} />
           )}
           {staff && (
             <PlayerFilter
@@ -43,5 +38,5 @@ export const Filters = async ({ player, staff }: FiltersProps) => {
         </div>
       )}
     </>
-  )
-}
+  );
+};

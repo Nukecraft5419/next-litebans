@@ -27,4 +27,4 @@ export const BansRowSkeleton = () => (
       <Skeleton className="size-8 rounded-md" />
     </TableCell>
   </TableRow>
-)
+);

@@ -3,10 +3,7 @@ export const siteConfig = {
   logo: "/logo.webp",
   favicon: "/logo.webp",
   languages: {
-    available: [
-      "en",
-      "es",
-    ],
+    available: ["en", "es"],
     default: "en",
   },
   console: {
@@ -36,7 +33,7 @@ export const siteConfig = {
           🔇 Mutes: {mutes}
           ⚠️ Warns: {warns}
           ❌ Kicks: {kicks}
-        `
+        `,
       },
       history: {
         // Placeholders: {total}, {bans}, {mutes}, {kicks}, {warns}
@@ -47,7 +44,7 @@ export const siteConfig = {
           🔇 Mutes: {mutes}
           ⚠️ Warns: {warns}
           ❌ Kicks: {kicks}
-        `
+        `,
       },
       player: {
         // Placeholders: {name}, {total}, {bans}, {mutes}, {kicks}, {warns}
@@ -92,19 +89,19 @@ export const siteConfig = {
       },
       bans: {
         // Placeholders: {total}
-        description: "Total bans: {total}"
+        description: "Total bans: {total}",
       },
       mutes: {
         // Placeholders: {total}
-        description: "Total mutes: {total}"
+        description: "Total mutes: {total}",
       },
       warns: {
         // Placeholders: {total}
-        description: "Total warns: {total}"
+        description: "Total warns: {total}",
       },
       kicks: {
         // Placeholders: {total}
-        description: "Total kicks: {total}"
+        description: "Total kicks: {total}",
       },
     },
     punishments: {
@@ -117,7 +114,7 @@ export const siteConfig = {
         📜 Reason: {reason}
         🕒 Date: {time}
         ⌛ Duration: {duration}
-        `
+        `,
       },
       mute: {
         // Placeholders: {name}, {staff}, {reason}, {time}, {duration}, {server}
@@ -128,7 +125,7 @@ export const siteConfig = {
         📜 Reason: {reason}
         🕒 Date: {time}
         ⌛ Duration: {duration}
-        `
+        `,
       },
       warn: {
         // Placeholders: {name}, {staff}, {reason}, {time}, {server}
@@ -138,7 +135,7 @@ export const siteConfig = {
 
         📜 Reason: {reason}
         🕒 Date: {time}
-        `
+        `,
       },
       kick: {
         // Placeholders: {name}, {staff}, {reason}, {time}, {server}
@@ -148,9 +145,9 @@ export const siteConfig = {
 
         📜 Reason: {reason}
         🕒 Date: {time}
-        `
-      }
-    }
-  }
-}
+        `,
+      },
+    },
+  },
+};
 export type SiteConfig = typeof siteConfig;

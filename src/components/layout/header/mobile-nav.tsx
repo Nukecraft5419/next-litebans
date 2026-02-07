@@ -1,31 +1,37 @@
-"use client"
+"use client";
 
-import { ReactNode, useState } from "react"
-import Link, { LinkProps } from "next/link"
-import { usePathname, useRouter } from "next/navigation"
+import { ReactNode, useState } from "react";
+import Link, { LinkProps } from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
-import { cn } from "@/lib/utils"
-import { useLang } from "@/lib/language/components/language-provider"
+import { cn } from "@/lib/utils";
+import { useLang } from "@/lib/language/components/language-provider";
 
-import { siteConfig } from "@config/site"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { WebsiteLogo } from "@/components/images/website-logo"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { siteConfig } from "@config/site";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { WebsiteLogo } from "@/components/images/website-logo";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 interface MobileNavProps {
-  dictionaries: Record<string, any>,
+  dictionaries: Record<string, any>;
   bans: number;
   mutes: number;
   warns: number;
   kicks: number;
 }
 
-export const MobileNav = ({ dictionaries, bans, mutes, warns, kicks}: MobileNavProps) => {
-  const [open, setOpen] = useState(false)
-  const pathname = usePathname()
-  const { dictionary } = useLang()
+export const MobileNav = ({
+  dictionaries,
+  bans,
+  mutes,
+  warns,
+  kicks,
+}: MobileNavProps) => {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const { dictionary } = useLang();
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -72,57 +78,103 @@ export const MobileNav = ({ dictionaries, bans, mutes, warns, kicks}: MobileNavP
           className="flex items-center"
           onOpenChange={setOpen}
         >
-          <WebsiteLogo 
-            width={24}
-            height={24}
-            className="mr-2"
-          />
+          <WebsiteLogo width={24} height={24} className="mr-2" />
           <span className="font-bold">{siteConfig.title}</span>
         </MobileLink>
         <ScrollArea className="my-4 pl-6">
           <nav className="flex flex-col space-y-3">
-          <MobileLink 
-            href="/bans"
-            className={cn("transition-colors pr-12 inline-flex w-full", pathname.startsWith("/bans") ? "hover:text-foreground text-foreground/80" : "hover:text-foreground/80 text-foreground/60")}
-            onOpenChange={setOpen}
-          >
-            {dictionary.words.bans.plural}<Badge variant={pathname.startsWith("/bans") ? "default" : "secondary"} className="!px-1 !py-0 ml-auto">{bans}</Badge>
-          </MobileLink>
+            <MobileLink
+              href="/bans"
+              className={cn(
+                "transition-colors pr-12 inline-flex w-full",
+                pathname.startsWith("/bans")
+                  ? "hover:text-foreground text-foreground/80"
+                  : "hover:text-foreground/80 text-foreground/60",
+              )}
+              onOpenChange={setOpen}
+            >
+              {dictionary.words.bans.plural}
+              <Badge
+                variant={pathname.startsWith("/bans") ? "default" : "secondary"}
+                className="!px-1 !py-0 ml-auto"
+              >
+                {bans}
+              </Badge>
+            </MobileLink>
 
-          <MobileLink 
-            href="/mutes"
-            className={cn("transition-colors pr-12 inline-flex w-full", pathname.startsWith("/bans") ? "hover:text-foreground text-foreground/80" : "hover:text-foreground/80 text-foreground/60")}
-            onOpenChange={setOpen}
-          >
-            {dictionary.words.mutes.plural} <Badge variant={pathname.startsWith("/mutes") ? "default" : "secondary"} className="!px-1 !py-0 ml-auto">{mutes}</Badge>
-          </MobileLink>
-          
-          <MobileLink 
-            href="/warns"
-            className={cn("transition-colors pr-12 inline-flex w-full", pathname.startsWith("/bans") ? "hover:text-foreground text-foreground/80" : "hover:text-foreground/80 text-foreground/60")}
-            onOpenChange={setOpen}
-          >
-            {dictionary.words.warns.plural} <Badge variant={pathname.startsWith("/warns") ? "default" : "secondary"} className="!px-1 !py-0 ml-auto">{warns}</Badge>
-          </MobileLink>
-          
-          <MobileLink 
-            href="/kicks"
-            className={cn("transition-colors pr-12 inline-flex w-full", pathname.startsWith("/bans") ? "hover:text-foreground text-foreground/80" : "hover:text-foreground/80 text-foreground/60")}
-            onOpenChange={setOpen}
-          >
-            {dictionary.words.kicks.plural} <Badge variant={pathname.startsWith("/kicks") ? "default" : "secondary"} className="!px-1 !py-0 ml-auto">{kicks}</Badge>
-          </MobileLink>
+            <MobileLink
+              href="/mutes"
+              className={cn(
+                "transition-colors pr-12 inline-flex w-full",
+                pathname.startsWith("/bans")
+                  ? "hover:text-foreground text-foreground/80"
+                  : "hover:text-foreground/80 text-foreground/60",
+              )}
+              onOpenChange={setOpen}
+            >
+              {dictionary.words.mutes.plural}{" "}
+              <Badge
+                variant={
+                  pathname.startsWith("/mutes") ? "default" : "secondary"
+                }
+                className="!px-1 !py-0 ml-auto"
+              >
+                {mutes}
+              </Badge>
+            </MobileLink>
+
+            <MobileLink
+              href="/warns"
+              className={cn(
+                "transition-colors pr-12 inline-flex w-full",
+                pathname.startsWith("/bans")
+                  ? "hover:text-foreground text-foreground/80"
+                  : "hover:text-foreground/80 text-foreground/60",
+              )}
+              onOpenChange={setOpen}
+            >
+              {dictionary.words.warns.plural}{" "}
+              <Badge
+                variant={
+                  pathname.startsWith("/warns") ? "default" : "secondary"
+                }
+                className="!px-1 !py-0 ml-auto"
+              >
+                {warns}
+              </Badge>
+            </MobileLink>
+
+            <MobileLink
+              href="/kicks"
+              className={cn(
+                "transition-colors pr-12 inline-flex w-full",
+                pathname.startsWith("/bans")
+                  ? "hover:text-foreground text-foreground/80"
+                  : "hover:text-foreground/80 text-foreground/60",
+              )}
+              onOpenChange={setOpen}
+            >
+              {dictionary.words.kicks.plural}{" "}
+              <Badge
+                variant={
+                  pathname.startsWith("/kicks") ? "default" : "secondary"
+                }
+                className="!px-1 !py-0 ml-auto"
+              >
+                {kicks}
+              </Badge>
+            </MobileLink>
           </nav>
         </ScrollArea>
       </SheetContent>
     </Sheet>
-  )
-}
+  );
+};
 
 interface MobileLinkProps extends LinkProps {
-  onOpenChange?: (open: boolean) => void
-  children: ReactNode
-  className?: string
+  onOpenChange?: (open: boolean) => void;
+  children: ReactNode;
+  className?: string;
 }
 
 export function MobileLink({
@@ -132,14 +184,14 @@ export function MobileLink({
   children,
   ...props
 }: MobileLinkProps) {
-  const router = useRouter()
-  const isExternal = href.toString().startsWith("http")
+  const router = useRouter();
+  const isExternal = href.toString().startsWith("http");
   return (
     <Link
       href={href}
       onClick={() => {
-        if (!isExternal) router.push(href.toString())
-        onOpenChange?.(false)
+        if (!isExternal) router.push(href.toString());
+        onOpenChange?.(false);
       }}
       className={cn(className)}
       target={isExternal ? "_blank" : undefined}
@@ -147,5 +199,5 @@ export function MobileLink({
     >
       {children}
     </Link>
-  )
+  );
 }

@@ -30,4 +30,4 @@ export const HistoryRowSkeleton = () => (
       <Skeleton className="size-8 rounded-md" />
     </TableCell>
   </TableRow>
-)
+);

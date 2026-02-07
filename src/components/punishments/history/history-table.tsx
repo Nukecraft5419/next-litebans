@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { Suspense } from "react";
 
@@ -10,12 +10,7 @@ import { TablePagination } from "@/components/table/pagination";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { HistoryBodyData } from "@/components/punishments/history/history-body-data";
 import { HistoryBodySkeleton } from "@/components/punishments/history/history-body-skeleton";
-import {
-  Table,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 interface HistoryTableProps {
   page: number;
@@ -23,16 +18,17 @@ interface HistoryTableProps {
   staff?: string;
 }
 
-export const HistoryTable = async ({ 
+export const HistoryTable = async ({
   page,
   player,
-  staff
+  staff,
 }: HistoryTableProps) => {
-
   const { lang, dictionary } = await language();
   const localDictionary = dictionary.pages.history;
 
-  const punishmentCount = await getPunishmentCount(player, staff).then(({ bans, mutes, warns, kicks }) => bans + mutes + warns + kicks);
+  const punishmentCount = await getPunishmentCount(player, staff).then(
+    ({ bans, mutes, warns, kicks }) => bans + mutes + warns + kicks,
+  );
   const totalPages = Math.ceil(punishmentCount / 10);
 
   return (
@@ -42,9 +38,15 @@ export const HistoryTable = async ({
         <Table>
           <TableHeader>
             <TableRow className="bg-muted/50">
-              <TableHead className="text-center">{localDictionary.table.heads.type}</TableHead>
-              <TableHead className="text-center !px-1">{localDictionary.table.heads.player}</TableHead>
-              <TableHead className="text-center !px-1">{localDictionary.table.heads.by}</TableHead>
+              <TableHead className="text-center">
+                {localDictionary.table.heads.type}
+              </TableHead>
+              <TableHead className="text-center !px-1">
+                {localDictionary.table.heads.player}
+              </TableHead>
+              <TableHead className="text-center !px-1">
+                {localDictionary.table.heads.by}
+              </TableHead>
               <TableHead>{localDictionary.table.heads.reason}</TableHead>
               <TableHead>{localDictionary.table.heads.date}</TableHead>
               <TableHead>{localDictionary.table.heads.expires}</TableHead>
@@ -52,7 +54,13 @@ export const HistoryTable = async ({
             </TableRow>
           </TableHeader>
           <Suspense fallback={<HistoryBodySkeleton />}>
-            <HistoryBodyData language={lang} dictionary={dictionary} page={page} player={player} staff={staff} />
+            <HistoryBodyData
+              language={lang}
+              dictionary={dictionary}
+              page={page}
+              player={player}
+              staff={staff}
+            />
           </Suspense>
         </Table>
         <ScrollBar className="md:hidden" orientation="horizontal" />

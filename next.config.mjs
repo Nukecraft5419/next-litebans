@@ -3,11 +3,11 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'minotar.net'
-      }
-    ]
-  }
+        protocol: "https",
+        hostname: "minotar.net",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

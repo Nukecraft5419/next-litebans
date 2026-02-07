@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useCallback } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -25,16 +25,17 @@ export const PlayerFilter = ({ type, name, uuid, console }: PlayerFilter) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-  
+
   const createRemovedQueryString = useCallback(
     (name: string) => {
-      const params = new URLSearchParams(searchParams.toString())
-      params.delete(name)
-      params.delete("page")
- 
-      return params.toString()
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete(name);
+      params.delete("page");
+
+      return params.toString();
     },
-    [searchParams])
+    [searchParams],
+  );
 
   const handleClick = () => {
     const query = createRemovedQueryString(type);
@@ -44,17 +45,26 @@ export const PlayerFilter = ({ type, name, uuid, console }: PlayerFilter) => {
     } else {
       router.push(`${pathname}?${query}`);
     }
-  }
+  };
 
   return (
-    <Button onClick={handleClick} variant="outline" size="sm" className="h-8 border-dashed flex mx-auto lg:mx-0">
+    <Button
+      onClick={handleClick}
+      variant="outline"
+      size="sm"
+      className="h-8 border-dashed flex mx-auto lg:mx-0"
+    >
       {dictionary.words[type]}
       <Separator orientation="vertical" className="mx-2 h-4" />
       <Badge variant="secondary" className="rounded-sm px-1 font-normal">
-        {console ? <ConsoleAvatar name={name} size={16} className="mr-1" /> : <PlayerAvatar uuid={uuid} name={name} size={16} className="mr-1" />}
+        {console ? (
+          <ConsoleAvatar name={name} size={16} className="mr-1" />
+        ) : (
+          <PlayerAvatar uuid={uuid} name={name} size={16} className="mr-1" />
+        )}
         {name}
       </Badge>
       <CrossCircledIcon className="ml-2 h-4 w-4" />
     </Button>
-  )
-}
+  );
+};

@@ -7,4 +7,4 @@ export const BansBodySkeleton = () => (
       <BansRowSkeleton key={index} />
     ))}
   </TableBody>
-)
+);

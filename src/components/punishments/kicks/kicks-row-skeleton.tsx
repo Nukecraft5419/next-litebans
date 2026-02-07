@@ -21,4 +21,4 @@ export const KicksRowSkeleton = () => (
       <Skeleton className="size-8 rounded-md" />
     </TableCell>
   </TableRow>
-)
+);

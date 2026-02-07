@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { Suspense } from "react";
 
@@ -10,12 +10,7 @@ import { TablePagination } from "@/components/table/pagination";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { MutesBodySkeleton } from "@/components/punishments/mutes/mutes-body-skeleton";
 import { MutesBodyData } from "@/components/punishments/mutes/mutes-body-data";
-import {
-  Table,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 interface MutesTableProps {
   page: number;
@@ -23,12 +18,7 @@ interface MutesTableProps {
   staff?: string;
 }
 
-export const MutesTable = async ({ 
-  page,
-  player,
-  staff
-}: MutesTableProps) => {
-
+export const MutesTable = async ({ page, player, staff }: MutesTableProps) => {
   const { lang, dictionary } = await language();
   const localDictionary = dictionary.pages.mutes;
 
@@ -42,8 +32,12 @@ export const MutesTable = async ({
         <Table>
           <TableHeader>
             <TableRow className="bg-muted/50">
-              <TableHead className="text-center">{localDictionary.table.heads.player}</TableHead>
-              <TableHead className="text-center">{localDictionary.table.heads.by}</TableHead>
+              <TableHead className="text-center">
+                {localDictionary.table.heads.player}
+              </TableHead>
+              <TableHead className="text-center">
+                {localDictionary.table.heads.by}
+              </TableHead>
               <TableHead>{localDictionary.table.heads.reason}</TableHead>
               <TableHead>{localDictionary.table.heads.date}</TableHead>
               <TableHead>{localDictionary.table.heads.expires}</TableHead>
@@ -51,7 +45,13 @@ export const MutesTable = async ({
             </TableRow>
           </TableHeader>
           <Suspense fallback={<MutesBodySkeleton />}>
-            <MutesBodyData language={lang} dictionary={dictionary} page={page} player={player} staff={staff} />
+            <MutesBodyData
+              language={lang}
+              dictionary={dictionary}
+              page={page}
+              player={player}
+              staff={staff}
+            />
           </Suspense>
         </Table>
         <ScrollBar className="md:hidden" orientation="horizontal" />

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 
@@ -19,5 +19,5 @@ export const WebsiteLogo = ({ height, width, className }: WebsiteLogoProps) => {
       width={width}
       className={className}
     />
-  )
-}
+  );
+};

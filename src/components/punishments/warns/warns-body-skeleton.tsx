@@ -7,4 +7,4 @@ export const WarnsBodySkeleton = () => (
       <WarnsRowSkeleton key={index} />
     ))}
   </TableBody>
-)
+);

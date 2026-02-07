@@ -6,12 +6,12 @@ type Locales = typeof locales;
 
 const formatDate = (date: Date) => {
   return format(date, siteConfig.openGraph.dateFormat);
-}
+};
 
 const formatDuration = (start: Date, end: Date, lang: string) => {
-  return formatDistance(start, end, { 
-    locale: locales[lang as keyof Locales]
+  return formatDistance(start, end, {
+    locale: locales[lang as keyof Locales],
   });
-}
+};
 
-export { formatDate, formatDuration }
+export { formatDate, formatDuration };

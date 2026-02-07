@@ -1,9 +1,13 @@
-import * as React from "react"
-import { PiCaretLeftFill, PiCaretRightFill, PiDotsThreeOutlineFill } from "react-icons/pi"
+import * as React from "react";
+import {
+  PiCaretLeftFill,
+  PiCaretRightFill,
+  PiDotsThreeOutlineFill,
+} from "react-icons/pi";
 
-import { cn } from "@/lib/utils"
-import { Button, ButtonProps, buttonVariants } from "@/components/ui/button"
-import Link from "next/link"
+import { cn } from "@/lib/utils";
+import { Button, ButtonProps, buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
@@ -12,8 +16,8 @@ const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
     className={cn("mx-auto flex w-full justify-center", className)}
     {...props}
   />
-)
-Pagination.displayName = "Pagination"
+);
+Pagination.displayName = "Pagination";
 
 const PaginationContent = React.forwardRef<
   HTMLUListElement,
@@ -24,22 +28,22 @@ const PaginationContent = React.forwardRef<
     className={cn("flex flex-row items-center gap-1", className)}
     {...props}
   />
-))
-PaginationContent.displayName = "PaginationContent"
+));
+PaginationContent.displayName = "PaginationContent";
 
 const PaginationItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentProps<"li">
 >(({ className, ...props }, ref) => (
   <li ref={ref} className={cn("", className)} {...props} />
-))
-PaginationItem.displayName = "PaginationItem"
+));
+PaginationItem.displayName = "PaginationItem";
 
 type PaginationLinkProps = {
-  isActive?: boolean
-  disabled?: boolean
+  isActive?: boolean;
+  disabled?: boolean;
 } & Pick<ButtonProps, "size"> &
-  (React.ComponentProps<typeof Link> | React.ComponentProps<typeof Button>)
+  (React.ComponentProps<typeof Link> | React.ComponentProps<typeof Button>);
 
 const PaginationLink = ({
   className,
@@ -47,34 +51,33 @@ const PaginationLink = ({
   disabled,
   size = "icon",
   ...props
-}: PaginationLinkProps) => (disabled ? (
-  <Button
-    aria-current={isActive ? "page" : undefined}
-    variant={isActive ? "outline" : "ghost"}
-    size={size}
-    className={className}
-    {...props as React.ComponentProps<typeof Button>}
-  />
-) : (
-  <Link
-    aria-current={isActive ? "page" : undefined}
-    className={cn(
-      buttonVariants({
-        variant: isActive ? "outline" : "ghost",
-        size,
-      }),
-      className
-    )}
-    {...props as React.ComponentProps<typeof Link>}
-  />
-)
-
-)
-PaginationLink.displayName = "PaginationLink"
+}: PaginationLinkProps) =>
+  disabled ? (
+    <Button
+      aria-current={isActive ? "page" : undefined}
+      variant={isActive ? "outline" : "ghost"}
+      size={size}
+      className={className}
+      {...(props as React.ComponentProps<typeof Button>)}
+    />
+  ) : (
+    <Link
+      aria-current={isActive ? "page" : undefined}
+      className={cn(
+        buttonVariants({
+          variant: isActive ? "outline" : "ghost",
+          size,
+        }),
+        className,
+      )}
+      {...(props as React.ComponentProps<typeof Link>)}
+    />
+  );
+PaginationLink.displayName = "PaginationLink";
 
 type PaginationNextPreviousProps = {
-  text: string
-} & React.ComponentProps<typeof PaginationLink>
+  text: string;
+} & React.ComponentProps<typeof PaginationLink>;
 
 const PaginationPrevious = ({
   className,
@@ -90,8 +93,8 @@ const PaginationPrevious = ({
     <PiCaretLeftFill className="h-4 w-4" />
     <span>{text}</span>
   </PaginationLink>
-)
-PaginationPrevious.displayName = "PaginationPrevious"
+);
+PaginationPrevious.displayName = "PaginationPrevious";
 
 const PaginationNext = ({
   className,
@@ -107,8 +110,8 @@ const PaginationNext = ({
     <span>{text}</span>
     <PiCaretRightFill className="h-4 w-4" />
   </PaginationLink>
-)
-PaginationNext.displayName = "PaginationNext"
+);
+PaginationNext.displayName = "PaginationNext";
 
 const PaginationEllipsis = ({
   className,
@@ -122,8 +125,8 @@ const PaginationEllipsis = ({
     <PiDotsThreeOutlineFill className="h-4 w-4" />
     <span className="sr-only">More pages</span>
   </span>
-)
-PaginationEllipsis.displayName = "PaginationEllipsis"
+);
+PaginationEllipsis.displayName = "PaginationEllipsis";
 
 export {
   Pagination,
@@ -133,4 +136,4 @@ export {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-}
+};

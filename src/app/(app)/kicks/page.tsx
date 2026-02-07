@@ -9,36 +9,35 @@ import { getPage, getPlayer, getStaff } from "@/utils/searchParams";
 import { KicksTable } from "@/components/punishments/kicks/kicks-table";
 
 export async function generateMetadata() {
-  
   const { dictionary } = await language();
-  
+
   const kickCount = await getKickCount();
-  
+
   return {
     title: dictionary.pages.kicks.title,
     openGraph: {
       images: process.env.SITE_URL + siteConfig.logo,
       description: p(siteConfig.openGraph.pages.kicks.description, {
-        total: kickCount
-      })
-    }
-  }
+        total: kickCount,
+      }),
+    },
+  };
 }
 
 export default async function Kicks(searchParams: SearchParams) {
   const dictionary = (await language()).dictionary.pages.kicks;
-  
+
   const page = getPage(searchParams);
   const player = getPlayer(searchParams);
   const staff = getStaff(searchParams);
-  
+
   const kickCount = await getKickCount(player, staff);
 
   return (
     <DefaultPage
       title={dictionary.title}
       description={p(dictionary.subtitle, {
-        total: kickCount
+        total: kickCount,
       })}
       className="w-full lg:w-[1024px]"
     >

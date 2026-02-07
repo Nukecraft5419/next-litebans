@@ -7,4 +7,4 @@ export const HistoryBodySkeleton = () => (
       <HistoryRowSkeleton key={index} />
     ))}
   </TableBody>
-)
+);

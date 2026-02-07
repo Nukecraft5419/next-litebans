@@ -3,14 +3,15 @@
 
   <h1 style="font-size: 38px">next-litebans </h1>
 
-  A web interface for [LiteBans](https://www.spigotmc.org/resources/litebans.3715/), built on top of:
+A web interface for [LiteBans](https://www.spigotmc.org/resources/litebans.3715/), built on top of:
 
-  [![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/) [![Prisma](https://img.shields.io/badge/Prisma-black?style=for-the-badge&logo=prisma&logoColor=white)](https://prisma.io/) [![shadcn/ui](https://cdn.yosoyvillaa.dev/uploads/shadcn.svg)](https://ui.shadcn.com/)
+[![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/) [![Prisma](https://img.shields.io/badge/Prisma-black?style=for-the-badge&logo=prisma&logoColor=white)](https://prisma.io/) [![shadcn/ui](https://cdn.yosoyvillaa.dev/uploads/shadcn.svg)](https://ui.shadcn.com/)
+
 </div>
 
 ## 👾 Demo
 
-You can view a demo of the project [here](https://next-litebans.yosoyvillaa.dev/). 
+You can view a demo of the project [here](https://next-litebans.yosoyvillaa.dev/).
 
 _P.D: All punishments in the demo are randomly added to the database with a list of random premium player names as punished players, and with a predefined list of reasons._
 
@@ -85,11 +86,11 @@ const nextConfig = {
     remotePatterns: [
       // One object for each domain
       {
-        protocol: 'https',
-        hostname: 'domain.example',
-      }
-    ]
-  }
+        protocol: "https",
+        hostname: "domain.example",
+      },
+    ],
+  },
 };
 ```
 
@@ -109,4 +110,4 @@ If your server allow Bedrock players through [Geyser](https://github.com/GeyserM
 ```
 
 > [!WARNING]
-> If you are using a special character for your Bedrock players, such as ``*.+?^${}()|[\]\\``, etc., you will need to enter ``src/utils/bedrock.ts``, and change the line 13 to ``const bedrockPrefixRegex = new RegExp(`^\\${siteConfig.bedrock.prefix}`);``, escaping the special character with a double backslash.
+> If you are using a special character for your Bedrock players, such as `*.+?^${}()|[\]\\`, etc., you will need to enter `src/utils/bedrock.ts`, and change the line 13 to ``const bedrockPrefixRegex = new RegExp(`^\\${siteConfig.bedrock.prefix}`);``, escaping the special character with a double backslash.

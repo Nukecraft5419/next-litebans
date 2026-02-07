@@ -7,4 +7,4 @@ export const MutesBodySkeleton = () => (
       <MutesRowSkeleton key={index} />
     ))}
   </TableBody>
-)
+);

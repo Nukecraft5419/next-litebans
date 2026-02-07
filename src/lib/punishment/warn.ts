@@ -10,17 +10,17 @@ const getWarnCount = async (player?: string, staff?: string) => {
   const count = await db.litebans_warnings.count({
     where: {
       uuid: player,
-      banned_by_uuid: staff
-    }
+      banned_by_uuid: staff,
+    },
   });
   return count;
-}
+};
 
 const getWarns = async (page: number, player?: string, staff?: string) => {
-  const warns =  await db.litebans_warnings.findMany({
+  const warns = await db.litebans_warnings.findMany({
     where: {
       uuid: player,
-      banned_by_uuid: staff
+      banned_by_uuid: staff,
     },
     take: 10,
     skip: (page - 1) * 10,
@@ -33,38 +33,43 @@ const getWarns = async (page: number, player?: string, staff?: string) => {
       time: true,
       until: true,
       active: true,
-      warned: true
+      warned: true,
     },
     orderBy: {
-      time: "desc"
-    }
+      time: "desc",
+    },
   });
 
   return warns;
-}
+};
 
-const sanitizeWarns = async (warns: (PunishmentListItem & { warned: boolean | string})[]) => {
-
-  const sanitized = await Promise.all(warns.map(async (warn) => {
-    const name = await getPlayerName(warn.uuid!);
-    return {
-      ...warn,
-      id: warn.id.toString(),
-      time: new Date(parseInt(warn.time.toString())),
-      console: warn.banned_by_uuid === siteConfig.console.uuid,
-      active: typeof warn.active === "boolean" ? warn.active : warn.active === "1",
-      warned: typeof warn.warned === "boolean" ? warn.warned : warn.warned === "1",
-      name
-    }
-  }));
+const sanitizeWarns = async (
+  warns: (PunishmentListItem & { warned: boolean | string })[],
+) => {
+  const sanitized = await Promise.all(
+    warns.map(async (warn) => {
+      const name = await getPlayerName(warn.uuid!);
+      return {
+        ...warn,
+        id: warn.id.toString(),
+        time: new Date(parseInt(warn.time.toString())),
+        console: warn.banned_by_uuid === siteConfig.console.uuid,
+        active:
+          typeof warn.active === "boolean" ? warn.active : warn.active === "1",
+        warned:
+          typeof warn.warned === "boolean" ? warn.warned : warn.warned === "1",
+        name,
+      };
+    }),
+  );
 
   return sanitized;
-}
+};
 
 const getWarn = async (id: number) => {
   const warn = await db.litebans_warnings.findUnique({
     where: {
-      id
+      id,
     },
     select: {
       id: true,
@@ -76,24 +81,22 @@ const getWarn = async (id: number) => {
       until: true,
       active: true,
       server_origin: true,
-      warned: true
-    }
+      warned: true,
+    },
   });
 
   if (!warn) {
     return null;
   }
-  
+
   const sanitized = (await sanitizeWarns([warn]))[0];
 
   return {
     ...sanitized,
-    server: warn.server_origin
-  }
-}
+    server: warn.server_origin,
+  };
+};
 
-const getCachedWarn = cache(
-  async (id: number) => getWarn(id)
-);
+const getCachedWarn = cache(async (id: number) => getWarn(id));
 
-export { getWarnCount, getWarns, sanitizeWarns, getWarn, getCachedWarn }
+export { getWarnCount, getWarns, sanitizeWarns, getWarn, getCachedWarn };

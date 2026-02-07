@@ -1,27 +1,27 @@
 const language = {
   info: {
     country_code: "ES",
-    lang_name: "Español"
+    lang_name: "Español",
   },
   site: {
-    description: "Una interfaz web simple para LiteBans."
+    description: "Una interfaz web simple para LiteBans.",
   },
   words: {
     bans: {
       singular: "Baneo",
-      plural: "Baneos"
+      plural: "Baneos",
     },
     mutes: {
       singular: "Mute",
-      plural: "Muteos"
+      plural: "Muteos",
     },
     kicks: {
       singular: "Expulsión",
-      plural: "Expulsiones"
+      plural: "Expulsiones",
     },
     warns: {
       singular: "Aviso",
-      plural: "Avisos"
+      plural: "Avisos",
     },
     yes: "Sí",
     no: "No",
@@ -37,7 +37,7 @@ const language = {
     home: {
       title: "Inicio",
       // Placeholders: {total}, {bans}, {mutes}, {kicks}, {warns}
-      subtitle: "¡Bienvenido a la interfaz web de Litebans!"
+      subtitle: "¡Bienvenido a la interfaz web de Litebans!",
     },
     history: {
       title: "Historial",
@@ -50,16 +50,16 @@ const language = {
           by: "Sancionado por",
           reason: "Razón",
           date: "Fecha",
-          expires: "Expiración"
+          expires: "Expiración",
         },
         permanent: "Sanción permanente",
         expire_not_applicable: "N/A",
         active: {
           true: "Activo",
           temporal: "Temporal",
-          false: "Expirado"
-        }
-      }
+          false: "Expirado",
+        },
+      },
     },
     bans: {
       title: "Baneos",
@@ -71,14 +71,14 @@ const language = {
           by: "Baneado por",
           reason: "Razón",
           date: "Fecha",
-          expires: "Expiración"
+          expires: "Expiración",
         },
         permanent: "Baneo permanente",
         active: {
           true: "Activo",
           temporal: "Temporal",
-          false: "Expirado"
-        }
+          false: "Expirado",
+        },
       },
       info: {
         title: "Baneo #{id}",
@@ -87,8 +87,8 @@ const language = {
           active: "Activo",
           expired: "Expirado",
           permanent: "Permanente",
-        }
-      }
+        },
+      },
     },
     mutes: {
       title: "Muteos",
@@ -100,14 +100,14 @@ const language = {
           by: "Silenciado por",
           reason: "Razón",
           date: "Fecha",
-          expires: "Expiración"
+          expires: "Expiración",
         },
         permanent: "Muteo permanente",
         active: {
           true: "Activo",
           temporal: "Temporal",
-          false: "Expirado"
-        }
+          false: "Expirado",
+        },
       },
       info: {
         title: "Muteo #{id}",
@@ -116,8 +116,8 @@ const language = {
           active: "Activo",
           expired: "Expirado",
           permanent: "Permanente",
-        }
-      }
+        },
+      },
     },
     warns: {
       title: "Avisos",
@@ -129,12 +129,12 @@ const language = {
           by: "Avisado por",
           reason: "Razón",
           date: "Fecha",
-          notified: "Notificado"
-        }
+          notified: "Notificado",
+        },
       },
       info: {
-        title: "Aviso #{id}"
-      }
+        title: "Aviso #{id}",
+      },
     },
     kicks: {
       title: "Expulsiones",
@@ -145,35 +145,36 @@ const language = {
           player: "Jugador",
           by: "Expulsado por",
           reason: "Razón",
-          date: "Fecha"
-        }
+          date: "Fecha",
+        },
       },
       info: {
-        title: "Expulsión #{id}"
-      }
+        title: "Expulsión #{id}",
+      },
     },
     playerHistory: {
       // Placeholders: {player}
-      title: "{player}"
+      title: "{player}",
     },
     errors: {
       notFound: {
         title: "404",
-        description: "Parece que te has perdido. Por favor, vuelve a la página principal",
-        button: "Volver a la página de inicio"
-      }
-    }
+        description:
+          "Parece que te has perdido. Por favor, vuelve a la página principal",
+        button: "Volver a la página de inicio",
+      },
+    },
   },
   pagination: {
     previous: "Anterior",
-    next: "Siguiente"
+    next: "Siguiente",
   },
   notifications: {
     playerNotFound: {
       title: "Error",
       description: "El jugador no existe en la base de datos.",
-    }
-  }
-}
+    },
+  },
+};
 
 module.exports = language;

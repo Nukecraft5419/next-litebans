@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { useLang } from "@/lib/language/components/language-provider";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import { DefaultPage } from "@/components/layout/default-page";
 
 export const NotFound = () => {
@@ -13,7 +13,7 @@ export const NotFound = () => {
 
   const handleBack = () => {
     router.push("/");
-  }
+  };
 
   return (
     <DefaultPage
@@ -24,5 +24,5 @@ export const NotFound = () => {
         {dictionary.pages.errors.notFound.button}
       </Button>
     </DefaultPage>
-  )
-}
+  );
+};

@@ -9,13 +9,22 @@ interface AvatarBustProps {
   className?: string;
 }
 
-export const AvatarBust = ({ name, uuid, console, className }: AvatarBustProps) => (
+export const AvatarBust = ({
+  name,
+  uuid,
+  console,
+  className,
+}: AvatarBustProps) => (
   // eslint-disable-next-line @next/next/no-img-element
-  <img 
-    src={console ? siteConfig.console.bust : `https://visage.surgeplay.com/bust/512/${getSkinUUID(name, uuid)}`} 
+  <img
+    src={
+      console
+        ? siteConfig.console.bust
+        : `https://visage.surgeplay.com/bust/512/${getSkinUUID(name, uuid)}`
+    }
     alt={name}
     width={192}
     height={192}
     className={cn("md:hidden mx-auto transition ease-in-out", className)}
   />
-)
+);

@@ -1,37 +1,43 @@
 import { cn } from "@/lib/utils";
-import { Dictionary } from "@/lib/language/types"
+import { Dictionary } from "@/lib/language/types";
 
-import { 
+import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger
+  TooltipTrigger,
 } from "@/components/ui/tooltip";
 
 interface PunishmentStatusDotProps {
-  dictionary: Dictionary
-  status: boolean | undefined
+  dictionary: Dictionary;
+  status: boolean | undefined;
 }
 
 export const PunishmentStatusDot = ({
   dictionary,
-  status
+  status,
 }: PunishmentStatusDotProps) => (
   <TooltipProvider delayDuration={50}>
     <Tooltip>
       <TooltipTrigger asChild>
-        <span 
+        <span
           className={cn(
-            status === undefined ? 
-              "bg-orange-500" :
-              status ? "bg-green-500" : "bg-red-500",
-            "flex rounded-full p-1 mr-2"
-          )} 
-        /> 
+            status === undefined
+              ? "bg-orange-500"
+              : status
+                ? "bg-green-500"
+                : "bg-red-500",
+            "flex rounded-full p-1 mr-2",
+          )}
+        />
       </TooltipTrigger>
       <TooltipContent>
-        {status === undefined ? dictionary.table.active.temporal : (status ? dictionary.table.active.true : dictionary.table.active.false)}
+        {status === undefined
+          ? dictionary.table.active.temporal
+          : status
+            ? dictionary.table.active.true
+            : dictionary.table.active.false}
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>
-)
+);
